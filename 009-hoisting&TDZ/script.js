@@ -15,6 +15,13 @@
    *
    **/
   let a = 12;
+
+  /**
+   * @note
+   * Variables declared with let and const are hoisted, but they are not accessible until they are initialized.
+   *
+   * This is different from var, which is hoisted and initialized with undefined during the memory creation phase.
+   */
 }
 
 {
@@ -23,9 +30,9 @@
   // Everything in JS engine has two phases 1. memory creation phase, 2. execution phase
   // Before the code run variable declared with var and funcitons get hoisted (memory is created in the creation phase), and variables with let, const get hoisted but it has a TDZ so we cannot access them without initializing them.
 
-  var a = 2; // hoisted
+  var a = 2; // hoisted | in memory creation phase a = undefined
 
-  // functions get hoisted too
+  // functions get hoisted too | the entire function get hoisted so we can call it before declaration
   function func() {
     let b = 3; // it also get hoisted but it has a TDZ
     const c = 4; // same as let
