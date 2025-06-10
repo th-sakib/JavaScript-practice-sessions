@@ -1,36 +1,101 @@
-# Day 11 - 40 Days of JavaScript
+# Closure in JS
 
-## **🎯 Goal of This Lesson**
+**Definition**: A closure is the combination of a function bundled together with reference to its surrounding state( the [[lexical environment]])
 
-- ✅ Day 11
-- ✅ What is Closure in JavaScript?
-- ✅ Understanding Closure With Lexical Scope
-- ✅ Closure Memorizing Outer Values
-- ✅ Closure Real World Use Case
-- ✅ Function Factory With Closure
-- ✅ Closure & Memory Leak
-- ✅ Advantages of Closure
-- ✅ Closure & Event Handlers
+---
 
-## 🫶 Support
+Closure is function that can access its parent's variables.
+Also Closure allows a function to access its outer functions variable even if the outer function is already **executed**.
 
-Your support means a lot.
+---
 
-- Please SUBSCRIBE to [tapaScript YouTube Channel](https://youtube.com/tapasadhikary) if not done already. A Big Thank You!
-- Liked my work? It takes months of hard work to create quality content and present it to you. You can show your support to me with a STAR(⭐) to this repository.
+## Code example
 
-  > Many Thanks to all the `Stargazers` who have supported this project with stars(⭐)
+```js
+function outer() {
+  let random = "random";
+  return function inner() {
+    console.log(random);
+  };
+}
 
-### 🤝 Sponsor My Work
+const result = outer();
+console.log(result);
+```
 
-I am an independent educator and open-source enthusiast who creates meaningful projects to teach programming on my YouTube Channel. **You can support my work by [Sponsoring me on GitHub](https://github.com/sponsors/atapas) or [Buy Me a Cofee](https://buymeacoffee.com/tapasadhikary)**.
+Here "result" will be the inner function with context of the "random" variable even tho the outer function is already been executed.
+This is also called [[memoizationVSmemorization | memoization]].
 
-## Video
+---
 
-Here is the video for you to go through and learn:
+## Taking advantage of object to memoize multiple function
 
-[![day-11](./banner.png)](https://youtu.be/lA7CGz3iHyI "Video")
+```js
+function createBankAccount(initialBalance) {
+  let balance = initialBalance;
 
-## **👩‍💻 🧑‍💻 Assignment Tasks**
+  return {
+    deposite: (amount) => {
+      balance += amount;
+      console.log(
+        "deposite amount: ",
+        amount,
+        ", Current balance: ",
+        initialBalance
+      );
+    },
+    withdraw: (amount) => {
+      if (amount > balance) {
+        console.log("insufficiant balance");
+      } else {
+        balance -= amount;
+      }
+    },
+    checkBalance: () => {
+      console.log(balance);
+    },
+  };
+}
 
-Please find the task assignments in the [Task File](./task.md).
+const myAccount = createBankAccount(10);
+
+myAccount.deposite(10);
+myAccount.deposite(30);
+myAccount.withdraw(10);
+myAccount.checkBalance();
+```
+
+In this code snippet balance is encapsulated using closure. And for closure we can access the balance even when the **createBankAccount()** function is executed.
+
+## Warning
+
+As the closure can remember the reference of its outer scope there is chance of memory leaks. So, be caution with your closure.
+
+---
+
+## Keytakeway | Uses
+
+1. You can keep variables private without exposing them.
+2. We can make function factory.
+3. We can stop variable pollution.
+4. We can keep variables alive between multiple calls.
+
+---
+
+## My Shocking Discovery
+
+I was using closure in many places without even knowing. Like in the event handlers.
+
+```js
+let a = 1;
+
+document.getElementByID(#demo).addEventListener("click", function() {
+	a++;
+})
+```
+
+The _a_ is being memoized because of closure.
+
+## Relates with:
+
+[[memoizationVSmemorization]]
