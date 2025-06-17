@@ -68,5 +68,58 @@ copyArr2 == arr2; // false
 let a = 1;
 let b = 2;
 [b, a] = [a, b]; // a's value destructured into b and b's value destructured into a
-copyArr2.length = 9999999999;
-console.log(copyArr2);
+copyArr2.length = 1;
+
+// # concat method
+const exampleArr = ["a", "b", "e", "f"];
+const exampleArr2 = ["c", "d"];
+const newArr = exampleArr.concat(exampleArr2);
+
+// # join method
+const joinedArr = exampleArr.join();
+const joinedArr2 = exampleArr.join(".");
+[].join(); // returns "" empty string
+
+// # fill method
+
+{
+  const exampleArr = ["a", "b", "c", "d"];
+  // exampleArr.fill("meaw");
+  // console.log(exampleArr); //['meaw', 'meaw', 'meaw', 'meaw'] // mutates the array
+  exampleArr.fill("meaw", 1, 4); // array.fill("what to fill with", start, end);
+  // console.log(exampleArr); //[ 'a', 'meaw', 'meaw', 'meaw' ] // mutates the array
+}
+{
+  // # include method | doesn't mutate original array
+  const exampleArr = ["a", "b", "c", "d", "a"];
+  const res = exampleArr.includes("a");
+  // console.log(res); // true
+
+  // # indexOf method
+  const res2 = exampleArr.indexOf("a"); // returns the index number
+  // console.log(res2); // 0
+  const res3 = exampleArr.indexOf("z");
+  // console.log(res3); // -1
+
+  // # lastIndexOf() method
+  const res4 = exampleArr.lastIndexOf("a");
+  // console.log(res4); // 4
+}
+{
+  // reverse() method
+  // toReversed() is for not mutating the original array
+  // it reverse the array | and modifies the original array
+  const arr = ["a ", "b", "c", "d"]; // [ 'a', 'meaw', 'meaw', 'meaw' ]
+  const res = arr.toReversed();
+  // console.log(res);
+  // console.log(arr.reverse());
+}
+
+{
+  function aaa() {
+    console.log(arguments); // array like object
+    const arr = [...arguments]; // another way is to use Array.from()
+    console.log(arr);
+  }
+  aaa(1, 2);
+}
