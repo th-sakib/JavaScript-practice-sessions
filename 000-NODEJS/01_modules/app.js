@@ -1,8 +1,21 @@
-const math = require('./math')
+// trying to replicate require() function in nodejs
+const math = loadModule('./sum')
 
-const res = math.addition(1, 4)
-const subRes = math.subtruct(4, 3)
+function loadModule(path) {
+    const vm = require('vm')
+    const fs = require('fs');
 
-console.log(res, subRes);
-console.log(module.exports);
-console.log(require);
+    // const resolvedPath = __dirname + path + ".js"
+    if (!path.endsWith(".js")) {
+        path = path + ".js";
+    }
+
+    const content = fs.readFileSync(path).toString();
+    const fly = {};
+    // wrap with wrapper function
+    (function (__filename, __dirname, fly, module) {
+        // eval(content)
+        vm.runInNewContext(content, { fly, loadModule, console })
+    })(__filename, __dirname, fly, module)
+    return fly
+}

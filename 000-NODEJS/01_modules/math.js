@@ -5,5 +5,6 @@ function addition(...nums) {
 function subtruct(num1, num2) {
     return num1 - num2
 }
+console.log("hello from math");
 
-module.exports = { addition, subtruct }
+fly.add = addition; // {} after this {add: addition[function]}
