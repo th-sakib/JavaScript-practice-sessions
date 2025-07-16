@@ -1,0 +1,15 @@
+{
+  "name": "calc-word",
+  "version": "1.0.0",
+  "description": "A word counting app.",
+  "main": "app.js",
+  "bin": {
+    "calc-word": "./app.js"
+  },
+  "keywords": [
+    "word",
+    "counter"
+  ],
+  "author": "th-sakib",
+  "license": "ISC"
+}
