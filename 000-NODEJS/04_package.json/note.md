@@ -1,0 +1,1 @@
+- We use `npm init` to initiate a node project. and it creates the **package.json** file.
