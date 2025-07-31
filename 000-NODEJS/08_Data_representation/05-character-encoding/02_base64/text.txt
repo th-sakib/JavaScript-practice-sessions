@@ -1,0 +1,6 @@
+a
+hex = 61
+binary = 01100001
+011000 010000 000000 000000 = group of 6 bits are represented as one character in base 64
+   Y      Q     =       =     // base64 encoded 
+final stirng will be YQ==
