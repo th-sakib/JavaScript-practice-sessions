@@ -10,7 +10,7 @@ Readable streams are used to **read data** from a source, such as reading files 
 ## 2. Writable Streams
 Writable streams are used to **write data** to a destination, such as writing to a file or sending HTTP responses.
 
-## 3. Duplex Streams
+## 3. Duplex Stream
 Duplex streams are streams that can **both read and write data**. These are useful for situations like network communication, where you both send and receive data.
 
 ## 4. Transform Streams
