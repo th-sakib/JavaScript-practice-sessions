@@ -3,6 +3,7 @@ import fs from "node:fs";
 const readable = fs.createReadStream('chars.txt', {
   highWaterMark: 4,
   encoding: "utf8",
+  // emitClose: false, // Whether or not the stream should emit 'close' after it has been destroyed. Default: true.
 });
 
 // set encoding
@@ -13,6 +14,7 @@ readable.on("data", (chunks) => {
   console.log(chunks);
 
   // destroy will destroy data flowing and pass error message as payload
+  // destroy event emit 'error' event and also 'close' event if the emitClose option is not set to false.
   readable.destroy(new Error("testing"));
 });
 
