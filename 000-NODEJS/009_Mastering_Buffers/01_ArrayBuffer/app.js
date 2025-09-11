@@ -6,7 +6,7 @@ const view = new DataView(buffer);
 // This view object now contain some usefull methods in its prototype. Which we can use and read-write the ArrayBuffer content.
 
 // writting value in ArrayBuffer using the view.
-view.setInt8(0, 90); // store decimal value 80 into the buffer
+view.setInt8(0, 90); // store decimal value 90 into the buffer
 view.setInt8(1, 0x50); // store hex value 50 into the buffer
 view.setInt8(2, 0o20); // store octal value 20 into the buffer
 view.setInt8(3, 0b101010); // store binary value 101010 into the buffer

@@ -1,18 +1,13 @@
-
 # Node.js Buffer Instance Methods and Properties
-
 This is a list of commonly used methods and properties for `Buffer` instances in Node.js.
 
 ## Properties
-
 1. **`buffer.length`**  
    - Returns the size (in bytes) of the buffer.
-
 2. **`buffer.byteLength`**  
    - Returns the actual byte length of the buffer content.
 
 ## Methods
-
 1. **`buffer.toString([encoding], [start], [end])`**  
    - Converts the buffer data to a string using a specified encoding.
 
@@ -48,3 +43,4 @@ This is a list of commonly used methods and properties for `Buffer` instances in
 - **`buffer.swap16()`**: Swaps the byte order in the buffer (for 16-bit values).
 - **`buffer.swap32()`**: Swaps the byte order in the buffer (for 32-bit values).
 - **`buffer.swap64()`**: Swaps the byte order in the buffer (for 64-bit values).
+

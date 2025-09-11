@@ -27,4 +27,8 @@ console.timeEnd();
  *
  * On the other hand with `fs.createWriteStream` the file is opened only the first time it is called,
  * Thats why it takes less time then `fs.writeFileSync`.
+ *
+ * Also stream won't write one number at a time. As it will use its **internal buffer**.
+ * the process becomes more robust and fast, because the RAM is faster then disc. and 64 KB will write in the disc at a time.
+ *
  * */
