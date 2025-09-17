@@ -15,10 +15,3 @@ import fs from "node:fs";
 const fd1 = fs.openSync("text.txt"); // just the the `fs.open` but synchronous.
 console.log(fd1)
 
-
-
-
-
-
-
-

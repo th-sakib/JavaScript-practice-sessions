@@ -10,13 +10,22 @@ console.time();
 //   }
 // } // 630 ms
 
-const writable = fs.createWriteStream("./100Knumber-withStreams.txt");
+// const writable = fs.createWriteStream("./100Knumber-withStreams.txt");
+//
+// for (let i = 1; i < 100000; i++) {
+//   writable.write(`${i}, `);
+// }
+//
+// writable.end(); // 31 ms
+//
+// console.timeEnd();
 
-for (let i = 1; i < 100000; i++) {
-  writable.write(`${i}, `);
+const fd = fs.openSync("test.txt", "w");
+
+for (let i = 1; i <= 100000; i++) {
+  fs.writeSync(fd, `${i}, `); // 188ms
 }
-
-writable.end(); // 31 ms
+fs.closeSync(fd);
 
 console.timeEnd();
 
