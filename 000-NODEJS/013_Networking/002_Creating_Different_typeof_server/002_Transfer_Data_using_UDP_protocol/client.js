@@ -11,11 +11,13 @@ const readStream = createReadStream(bigFilePath, { highWaterMark: 1000 });
 
 const socket = dgram.createSocket("udp4");
 
+// getting the servers response
 socket.on("message", (msg, rinfo) => {
   console.log(msg.toString());
   socket.close();
 });
 
+// reading and sending the file info in server
 readStream.on("data", (chunk) => {
   socket.send(chunk, 4000, "192.168.1.102", (error, bytes) => {
     if (error) console.log(error);
