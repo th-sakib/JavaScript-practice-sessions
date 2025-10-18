@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Upload Image</h1>
-    <form aria-busy>
+    <form action="http://localhost:4000" method="post" enctype="multipart/form-data">
       <input type="file" name="file-upload" required />
       <button type="submit">Upload</button>
     </form>
