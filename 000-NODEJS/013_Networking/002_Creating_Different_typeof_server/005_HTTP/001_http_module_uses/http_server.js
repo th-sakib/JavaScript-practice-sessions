@@ -3,7 +3,7 @@ import http from "node:http";
 const server = http.createServer();
 
 /*
- * Connection event is for specfic schenerio where we want,
+ * Connection event is for specfic scenerio where we want,
  * access of lower level socket control.
  * But its not recommended to use in regular basis.
  * We use request event more than this one for handle http requests and responses
