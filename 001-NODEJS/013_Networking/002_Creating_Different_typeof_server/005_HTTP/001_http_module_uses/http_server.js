@@ -9,21 +9,20 @@ const server = http.createServer();
  * We use request event more than this one for handle http requests and responses
  */
 
-// server.on("connection", (socket) => {
-//   socket.end("HTTP \n\nHi from server");
-//   socket.on("error", (err) => {
-//     console.log(err);
-//   });
-//
-//   /*
-//    * Here as the connection is emitting the tcp.socket,
-//    * we will get the headers along the data sent by the client.
-//    * unlike the request event this include the TCP headers too
-//    * */
-//   socket.on("data", (chunk) => {
-//     console.log(chunk.toString());
-//   });
-// });
+server.on("connection", (socket) => {
+  socket.end("HTTP \n\nHi from server");
+  socket.on("error", (err) => {
+    console.log(err);
+  });
+  /*
+   * Here as the connection is emitting the tcp.socket,
+   * we will get the headers along the data sent by the client.
+   * unlike the 'request' event this include the TCP headers too
+   * */
+  socket.on("data", (chunk) => {
+    console.log(chunk.toString());
+  });
+});
 
 // request event is emitted when,
 // a client request to the server

@@ -11,10 +11,14 @@ function App() {
 
   // fetching the data // get request
   const getDirectoryContents = async () => {
-    const res = await fetch(url);
-    const data = await res.json();
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
 
-    setDirectoryContents(data);
+      setDirectoryContents(data?.directoryContent);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

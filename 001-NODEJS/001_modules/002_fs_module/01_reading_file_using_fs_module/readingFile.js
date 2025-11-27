@@ -19,6 +19,9 @@
 // == we have a promise based fs module by nodejs ==
 import fs from "fs/promises";
 // const contentBuffer = await fs.readFile('./index.html', "utf8");
-const content = await fs.readFile('./index.html', "utf8");
+const content = await fs.readFile("./index.html", "utf8");
+const stats = await fs.stat("./index.html");
+console.log(stats);
 
 export default content;
+
