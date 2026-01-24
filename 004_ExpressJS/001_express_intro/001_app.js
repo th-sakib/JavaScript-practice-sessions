@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 const port = 4000;
 
-// global middleware | to parse req data
+// * global middleware | to parse req data
 // app.use((req, res, next) => {
 //   req.on("data", (chunk) => {
 //     const reqBody = JSON.parse(chunk.toString());
@@ -11,7 +11,7 @@ const port = 4000;
 //     next();
 //   });
 // });
-// ++OR++ just use express builtin middleware
+// ! ++OR++ just use express builtin middleware
 app.use(express.json());
 
 // x-powered-by: this header is set by express for promotional purposes.
@@ -24,16 +24,18 @@ app.get(
   "/",
   /**
    * These are middlewares.
-   * Middle wares are two types:
-   * 1. Request handling middlewares, 2. Error handling middlewares
+   * * Middlewares are two types:
+   * 1. Request handling middlewares,
+   * 2. Error handling middlewares
+   *
    * These two are Request handling middlewares.
    */
   (req, res, next) => {
     /**
      * * res.send() vs res.end()
      * res.send adds to extra headers (which res.end doesn't)
-     * 1. Content-Type: res.send() set this header autometically and it can set proper value for this header too.
-     * 2. Etag(used for caching): res.send set this header autometically
+     * 1. Content-Type: res.send() set this header automatically and it can set proper value for this header too.
+     * 2. Etag(used for caching): res.send set this header automatically
      */
     res.send("Hello World");
     /*
@@ -46,10 +48,10 @@ app.get(
     next();
   },
   (req, res) => {
-    // error middleware wil be called | manually call error handling middleware
+    // * we can call (manually) error handling middleware by using:
     // next("some error")
 
-    //if any error is thrown | autometically error handling middleware will be called
+    //* We can throw Error from synchronous operations like this:
     // throw new Error("new error");
 
     /**
@@ -59,7 +61,7 @@ app.get(
         # here the "/" is the route
      * route and req.url can be different in certain situations
      */
-    console.log("requet url: ", req.url);
+    console.log("request url: ", req.url);
     console.log("route: ", req.route.path, "\n");
 
     console.log("second middleware");
@@ -71,7 +73,7 @@ app.get(
    */
   (err, req, res, next) => {
     console.log("error is on the bizz: ", err.message);
-  }
+  },
 );
 
 //* handling post requests
